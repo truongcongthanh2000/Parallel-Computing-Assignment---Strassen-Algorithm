@@ -102,7 +102,7 @@ void norm(int normSize, vvi &a) {
 
 vvi Strassen(vvi &a, vvi &b) {
     int n = (int)a.size();
-    if (n == 2) return multiply(a, b);
+    if (n <= 2) return multiply(a, b);
 
     int newSize = n / 2;
     vvi a11, a12, a21, a22, b11, b12, b21, b22;
