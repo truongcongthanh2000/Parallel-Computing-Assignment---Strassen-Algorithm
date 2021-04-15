@@ -128,7 +128,7 @@ vvi Strassen(vvi &a, vvi &b) {
     // Calculating p1 to p7:
     vvi p1 = Strassen(aResult, bResult); // p1 = (a11 + a22) * (b11 + b22)
 
-    aResult = matrix_add(a21, a22); // p2 = a21 + a22
+    aResult = matrix_add(a21, a22); // a21 + a22
     vvi p2 = Strassen(aResult, b11); // p2 = (a21 + a22) * b11
 
     bResult = matrix_sub(b12, b22); // b12 - b22
