@@ -221,9 +221,9 @@ vvi Strassen(vvi a, vvi b) {
     bResult = matrix_add(aResult, p7); // p1 + p4 + p7 np + np + np
     vvi c11 = matrix_sub(bResult, p5); // c11 = p1 + p4 - p5 + p7 np + np - np + np
 
-    aResult = matrix_add(p1, p3); // p1 + p3
-    bResult = matrix_add(aResult, p6); // p1 + p3 + p6
-    vvi c22 = matrix_sub(bResult, p2); // c22 = p1 - p2 + p3 + p6
+    aResult = matrix_add(p1, p3); // p1 + p3 np + np 
+    bResult = matrix_add(aResult, p6); // p1 + p3 + p6 np + np + np 
+    vvi c22 = matrix_sub(bResult, p2); // c22 = p1 - p2 + p3 + p6 np - np + np + np
 
     // Grouping the results obtained in a single matrix
     vvi c(n, vi(p, 0));
