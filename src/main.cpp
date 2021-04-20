@@ -97,7 +97,7 @@ int main(int argc, char** argv) {
 		ofs << "\n";
 
 		ofs << "Strassen Serial w Lazy padding: ";
-		timer.set_decoratee(&strassen_serial_lazy);
+		// timer.set_decoratee(&strassen_serial_lazy);
 		checker(mats);
 
 		ofs << "\n";

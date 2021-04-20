@@ -1,3 +1,4 @@
 Naive Serial: 0.000 OK 
 Naive OpenMP: 0.000 OK 
 Strassen Serial w Eager padding: 0.000 OK 
+Strassen Serial w Lazy padding: 0.000 OK 
