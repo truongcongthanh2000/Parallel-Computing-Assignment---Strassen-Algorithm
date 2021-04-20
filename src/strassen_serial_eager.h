@@ -38,6 +38,8 @@ public:
             mats[i].resize(dimensions[i], dimensions[i + 1]);
         }
 
+        res.resize(mats[0].size(0), mats[1].size(1));
+
         return res;
     }
 

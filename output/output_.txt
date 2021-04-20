@@ -2,3 +2,27 @@ Naive Serial: 0.000 OK
 Naive OpenMP: 0.000 OK 
 Strassen Serial w Eager padding: 0.000 OK 
 Strassen Serial w Lazy padding: 0.000 OK 
+Naive Serial: 0.000 OK 
+Naive OpenMP: 0.000 OK 
+Strassen Serial w Eager padding: 0.000 OK 
+Strassen Serial w Lazy padding: 0.000 OK 
+Naive Serial: 0.000 OK 
+Naive OpenMP: 0.000 OK 
+Strassen Serial w Eager padding: 0.001 OK 
+Strassen Serial w Lazy padding: 3.103 NOT OK 
+Naive Serial: 0.004 OK 
+Naive OpenMP: 0.003 OK 
+Strassen Serial w Eager padding: 0.004 OK 
+Strassen Serial w Lazy padding: 0.005 OK 
+Naive Serial: 0.026 OK 
+Naive OpenMP: 0.025 OK 
+Strassen Serial w Eager padding: 0.031 OK 
+Strassen Serial w Lazy padding: 0.031 OK 
+Naive Serial: 0.015 OK 
+Naive OpenMP: 0.014 OK 
+Strassen Serial w Eager padding: 0.068 OK 
+Strassen Serial w Lazy padding: 0.068 NOT OK 
+Naive Serial: 0.015 OK 
+Naive OpenMP: 0.014 OK 
+Strassen Serial w Eager padding: 0.209 OK 
+Strassen Serial w Lazy padding: 0.198 NOT OK 

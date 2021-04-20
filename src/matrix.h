@@ -24,7 +24,7 @@ public:
 	size_t size(size_t axis) const { return this->m_size[axis]; }
 
 	void resize(size_t n_row, size_t n_column) {
-		this->m_array.resize(n_row, row_type(0));
+		this->m_array.resize(n_row, row_type(n_column, 0));
 
 		if (n_column != this->m_size[1]) {
 			for (size_t i = 0; i < n_row; ++i) {
@@ -70,7 +70,7 @@ public:
 
 	Matrix& operator +=(const Matrix& other) {
 		for (size_t i = 0; i < this->m_size[0]; ++i) {
-			for (size_t j = 0; j < this->m_size[0]; ++j) {
+			for (size_t j = 0; j < this->m_size[1]; ++j) {
 				this->m_array[i][j] += other.m_array[i][j];
 			}
 		}
@@ -80,7 +80,7 @@ public:
 
 	Matrix& operator -=(const Matrix& other) {
 		for (size_t i = 0; i < this->m_size[0]; ++i) {
-			for (size_t j = 0; j < this->m_size[0]; ++j) {
+			for (size_t j = 0; j < this->m_size[1]; ++j) {
 				this->m_array[i][j] -= other.m_array[i][j];
 			}
 		}
