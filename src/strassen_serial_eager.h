@@ -86,31 +86,31 @@ private:
         p[0] = this->strassen(s);                       // p0 = (a00 + a11) * (b00 + b11)
 
         for (size_t i = 0; i < 2; ++i) {
-            s[0] = mats_sub[0][1 - i][i] + mats_sub[0][1 - i][1 - i];   // a10 + a11                    a01 + a00
-            s[1].swap(mats_sub[1][i][i]);                               // b00                          b11
-            p[1 + i] = this->strassen(s);                               // p1 = (a10 + a11) * b00       p2 = (a00 + a01) * b11
+            (s[0] = mats_sub[0][1 - i][i]) += mats_sub[0][1 - i][1 - i];    // a10 + a11                    a01 + a00
+            s[1].swap(mats_sub[1][i][i]);                                   // b00                          b11
+            p[1 + i] = this->strassen(s);                                   // p1 = (a10 + a11) * b00       p2 = (a00 + a01) * b11
             s[1].swap(mats_sub[1][i][i]);
         }
 
         for (size_t i = 0; i < 2; ++i) {
-            s[0].swap(mats_sub[0][i][i]);                               // a00                          a11
-            s[1] = mats_sub[1][i][1 - i] - mats_sub[1][1 - i][1 - i];   // b01 - b11                    b10 - b00
-            p[3 + i] = this->strassen(s);                               // p3 = a00 * (b01 - b11)       p4 = a11 * (b10 - b00)
+            s[0].swap(mats_sub[0][i][i]);                                   // a00                          a11
+            (s[1] = mats_sub[1][i][1 - i]) -= mats_sub[1][1 - i][1 - i];    // b01 - b11                    b10 - b00
+            p[3 + i] = this->strassen(s);                                   // p3 = a00 * (b01 - b11)       p4 = a11 * (b10 - b00)
             s[0].swap(mats_sub[0][i][i]);
         }
 
         for (size_t i = 0; i < 2; ++i) {
-            s[0] = mats_sub[0][1 - i][i] - mats_sub[0][i][i];   // a10 - a00                            a01 - a11
-            s[1] = mats_sub[1][i][i] + mats_sub[1][i][1 - i];   // b00 + b01                            b11 + b10
-            p[5 + i] = this->strassen(s);                       // p5 = (a10 - a00) * (b00 + b01)       p6 = (a01 - a11) * (b11 + b10)
+            (s[0] = mats_sub[0][1 - i][i]) -= mats_sub[0][i][i];    // a10 - a00                            a01 - a11
+            (s[1] = mats_sub[1][i][i]) += mats_sub[1][i][1 - i];    // b00 + b01                            b11 + b10
+            p[5 + i] = this->strassen(s);                           // p5 = (a10 - a00) * (b00 + b01)       p6 = (a01 - a11) * (b11 + b10)
         }
 
         // Calculate c00, c11, c01 and c10
         array<array<Matrix<T>, 2>, 2> res_sub;
 
         for (size_t i = 0; i < 2; ++i) {
-            res_sub[i][i] = p[0] - p[2 - i] + p[4 - i] + p[6 - i];  // c00 = p0 - p2 + p4 + p6      c11 = p0 - p1 + p3 + p5
-            res_sub[i][1 - i] = p[2 - i] + p[3 + i];                // c01 = p2 + p3                c10 = p1 + p4
+            (((res_sub[i][i] = p[0]) -= p[2 - i]) += p[4 - i]) += p[6 - i]; // c00 = p0 - p2 + p4 + p6      c11 = p0 - p1 + p3 + p5
+            (res_sub[i][1 - i] = p[2 - i]) += p[3 + i];                     // c01 = p2 + p3                c10 = p1 + p4
         }
 
         // Group into a single matrix
