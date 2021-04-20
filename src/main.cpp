@@ -67,15 +67,20 @@ int main(int argc, char** argv) {
 	Printer<int> printer(&checker, &cout);
 
 	for (const auto& file_name : input_file_names) {
-		std::ifstream ifs("input\\" + file_name);
+		ifstream ifs("input\\" + file_name);
 
 		array<Matrix<int>, 2> mats{ read_matrix(ifs), read_matrix(ifs) };
 		auto res = read_matrix(ifs);
 		checker.set_answer(&res);
 
+		ofstream oofs("output\\" + file_name);
+
+
 		ofs << "Naive Serial: ";
 		timer.set_decoratee(&naive_serial);
-		checker(mats);
+		printer.set_ostream(&oofs);
+		printer(mats);
+		
 
 		ofs << "\n";
 
