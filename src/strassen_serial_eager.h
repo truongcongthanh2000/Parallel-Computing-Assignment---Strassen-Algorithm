@@ -19,15 +19,21 @@ template <class T = int, size_t B = 1>
 class StrassenSerialEager : public Decorator<T> {
 public:
     Matrix<T> operator ()(array<Matrix<T>, 2>& mats) const override {
+        // get 3 dimensions: n, m, p
         const array<size_t, 3>& dimensions = { mats[0].size(0), mats[0].size(1), mats[1].size(1) };
+
+        // eager padding means padding here
         auto dimensions_new = this->dimensions_normalized(dimensions);
 
+        // resize
         for (size_t i = 0; i < 2; ++i) {
             mats[i].resize(dimensions_new[i], dimensions_new[i + 1]);
         }
 
+        // multiply
         auto res = this->strassen(mats);
 
+        // resize back
         for (size_t i = 0; i < 2; ++i) {
             mats[i].resize(dimensions[i], dimensions[i + 1]);
         }
@@ -37,14 +43,19 @@ public:
 
 private:
     Matrix<T> strassen(array<Matrix<T>, 2>& mats) const {
+        // get 3 dimensions
         const array<size_t, 3> dimensions = { mats[0].size(0), mats[0].size(1), mats[1].size(1) };
+
+        // check base case
         if (this->reached_base_dimensions(dimensions)) {
             return NaiveSerial<T>()(mats);
         }
 
+        // divide
         array<size_t, 3> dimensions_sub{ 0 };
-        transform(dimensions.begin(), dimensions.end(), dimensions_sub.begin(), [](size_t x) { return x >> 1; });
+        transform(dimensions.begin(), dimensions.end(), dimensions_sub.begin(), [](size_t x) { return x >> 1; });  // this is dimensions / 2
 
+        // copy into submatrices
         array<array<array<Matrix<T>, 2>, 2>, 2> mats_sub;
         for (size_t i = 0; i < mats_sub.size(); ++i) {
             for (size_t j = 0; j < mats_sub[i].size(); ++j) {
@@ -102,7 +113,7 @@ private:
             res_sub[i][1 - i] = p[2 - i] + p[3 + i];                // c01 = p2 + p3                c10 = p1 + p4
         }
 
-        // Grouping the results obtained in a single matrix
+        // Group into a single matrix
         Matrix<T> res(dimensions[0], dimensions[2]);
         for (size_t i = 0, pi = 0; i < res_sub.size(); pi += res_sub[0][0].size(0), ++i) {
             for (size_t j = 0, pj = 0; j < res_sub[0].size(); pj += res_sub[0][0].size(1), ++j) {
@@ -117,6 +128,7 @@ private:
         return res;
     }
 
+    // scale dimensions to 2^k * b
     array<size_t, 3> dimensions_normalized(const array<size_t, 3>& dimensions) const {
         array<size_t, 3> res(dimensions);
 
@@ -136,6 +148,7 @@ private:
     }
 
 
+    // check base case
     bool reached_base_dimensions(const std::array<size_t, 3>& dimensions) const {
         // return accumulate(dimensions.begin(), dimensions.end(), 1, multiplies<size_t>()) <= B;
         return all_of(dimensions.begin(), dimensions.end(), [](size_t x) { return x <= B; });
