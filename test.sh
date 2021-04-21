@@ -3,12 +3,12 @@
 echo "Gen matrix"
 g++ -std=c++11 gen.cpp -o gen
 
-./gen 4 6 8 10
+./gen 1000 1000 1000 10
 
-echo "Run strassen algorithm by divide-and-conquer"
+# echo "Run strassen algorithm by divide-and-conquer"
 
-g++ -std=c++11 strassen_dac.cpp -o strassen_dac
-./strassen_dac
+# g++ -std=c++11 strassen_dac.cpp -o strassen_dac
+# ./strassen_dac
 
 echo "Run strassen algorithm by divide-and-conquer with lazy padding"
 

@@ -248,9 +248,16 @@ int main(int argc, char* argv[]) {
     int p = (int)b[0].size();
     cout << "n, m, p = " << n << " " << m << " " << p << endl;
 
+    clock_t begin, end;
+    begin = clock();
     vvi c1 = multiply(a, b); ///O(N^3)
+    end = clock();
+    cout << "Time naive algorithm O(N^3) = " << fixed << setprecision(10) << (double)(end - begin) / (double)CLOCKS_PER_SEC << endl;
 
+    begin = clock();
     vvi c2 = Strassen(a, b); ///O(N^log2(7))
+    end = clock();
+    cout << "Time strassen algorithm O(N^log2(7)) = " << fixed << setprecision(10) << (double)(end - begin) / (double)CLOCKS_PER_SEC << endl;
 
     assert(c1 == c2);
 

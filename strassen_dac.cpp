@@ -16,7 +16,7 @@ void load(vvi &a, vvi &b) {
         for (int j = 0; j < m; j++) {
             int x;
             finp >> x;
-            a[i].push_back(x);
+            a[i].emplace_back(x);
             assert(x >= 1);
         }
     }
@@ -27,7 +27,7 @@ void load(vvi &a, vvi &b) {
         for (int j = 0; j < p; j++) {
             int x;
             finp >> x;
-            b[i].push_back(x);
+            b[i].emplace_back(x);
             assert(x >= 1);
         }
     }
@@ -90,9 +90,9 @@ void norm(int normSize, vvi &a) {
     int m = (int)a[0].size();
 
     for (int i = 0; i < n; i++) {
-        for (int j = m; j < normSize; j++) a[i].push_back(0);
+        for (int j = m; j < normSize; j++) a[i].emplace_back(0);
     }
-    for (int i = n; i < normSize; i++) a.push_back(vi(normSize, 0));
+    for (int i = n; i < normSize; i++) a.emplace_back(vi(normSize, 0));
 
     assert((int)a.size() == (int)a[0].size());
     int sz = (int)a.size();
@@ -192,8 +192,16 @@ int main(int argc, char* argv[]) {
     norm(pw2, a);
     norm(pw2, b);
 
+    clock_t begin, end;
+    begin = clock();
     vvi c1 = multiply(a, b); ///O(N^3)
+    end = clock();
+    cout << "Time naive algorithm O(N^3) = " << fixed << setprecision(10) << (double)(end - begin) / (double)CLOCKS_PER_SEC << endl;
+
+    begin = clock();
     vvi c2 = Strassen(a, b); ///O(N^log2(7))
+    end = clock();
+    cout << "Time strassen algorithm O(N^log2(7)) = " << fixed << setprecision(10) << (double)(end - begin) / (double)CLOCKS_PER_SEC << endl;
 
     assert(c1 == c2);
 
