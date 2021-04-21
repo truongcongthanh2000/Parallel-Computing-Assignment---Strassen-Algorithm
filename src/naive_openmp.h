@@ -47,11 +47,11 @@ private:
 	}
 
 	void transpose_helper(size_t x, size_t dx, size_t y, size_t dy, const Matrix<T>& mat, Matrix<T>& mat_T) const {
-		if (dx <= 16 && dy <= 16) {
+		if (dx <= 64 && dy <= 64) {
 			#pragma omp parallel for
-			for (int i = 0, px = x; i < dx; ++i, ++px) {
-				for (int j = 0, py = y; j < dy; ++j, ++py) {
-					mat_T[py][px] = mat[px][py];
+			for (int i = 0; i < dx; ++i) {
+				for (int j = 0; j < dy; ++j) {
+					mat_T[y + j][x + i] = mat[x + i][y + j];
 				}
 			}
 		}

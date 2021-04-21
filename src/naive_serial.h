@@ -44,10 +44,10 @@ private:
 	}
 
 	void transpose_helper(size_t x, size_t dx, size_t y, size_t dy, const Matrix<T>& mat, Matrix<T>& mat_T) const {
-		if (dx <= 8 && dy <= 8) {
-			for (size_t i = 0, px = x; i < dx; ++i, ++px) {
-				for (size_t j = 0, py = y; j < dy; ++j, ++py) {
-					mat_T[py][px] = mat[px][py];
+		if (dx <= 16 && dy <= 16) {
+			for (size_t i = 0; i < dx; ++i) {
+				for (size_t j = 0; j < dy; ++j) {
+					mat_T[y + j][x + i] = mat[x + i][y + j];
 				}
 			}
 		}

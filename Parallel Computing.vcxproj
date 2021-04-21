@@ -98,12 +98,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\gen.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\checker.h" />
     <ClInclude Include="src\decorator.h" />
+    <ClInclude Include="src\gen.h" />
     <ClInclude Include="src\matrix.h" />
     <ClInclude Include="src\naive_openmp.h" />
     <ClInclude Include="src\naive_serial.h" />

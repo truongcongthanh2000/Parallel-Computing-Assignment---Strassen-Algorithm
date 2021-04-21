@@ -1,6 +1,6 @@
 ﻿  main.cpp
-C:\Users\Minh\Desktop\Parallel Computing\src\main.cpp(52,27): warning C4996: 'ctime': This function or variable may be unsafe. Consider using ctime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-C:\Users\Minh\Desktop\Parallel Computing\src\naive_openmp.h(52,30): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Minh\Desktop\Parallel Computing\src\main.cpp(56,17): warning C4996: 'ctime': This function or variable may be unsafe. Consider using ctime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Minh\Desktop\Parallel Computing\src\naive_openmp.h(52,22): warning C4018: '<': signed/unsigned mismatch
 C:\Users\Minh\Desktop\Parallel Computing\src\naive_openmp.h(49): message : while compiling class template member function 'void NaiveOpenMp<int>::transpose_helper(size_t,size_t,size_t,size_t,const Matrix<T,int> &,Matrix<T,int> &) const'
           with
           [
@@ -11,6 +11,6 @@ C:\Users\Minh\Desktop\Parallel Computing\src\naive_openmp.h(43): message : see r
           [
               T=int
           ]
-C:\Users\Minh\Desktop\Parallel Computing\src\main.cpp(59): message : see reference to class template instantiation 'NaiveOpenMp<int>' being compiled
-C:\Users\Minh\Desktop\Parallel Computing\src\naive_openmp.h(53,31): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Minh\Desktop\Parallel Computing\src\gen.h(34): message : see reference to class template instantiation 'NaiveOpenMp<int>' being compiled
+C:\Users\Minh\Desktop\Parallel Computing\src\naive_openmp.h(53,23): warning C4018: '<': signed/unsigned mismatch
   Parallel Computing.vcxproj -> C:\Users\Minh\Desktop\Parallel Computing\Debug\Parallel Computing.exe

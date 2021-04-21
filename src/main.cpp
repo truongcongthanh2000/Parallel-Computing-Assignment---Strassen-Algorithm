@@ -1,4 +1,5 @@
 #include "checker.h"
+#include "gen.h"
 #include "matrix.h"
 #include "naive_openmp.h"
 #include "naive_serial.h"
@@ -19,7 +20,7 @@ using namespace std;
 
 
 template <class T = int>
-Matrix<T> read_matrix(std::istream& is = std::cin) {
+Matrix<T> read_matrix(istream& is = cin) {
 	size_t n, m;
 	is >> n >> m;
 
@@ -35,21 +36,28 @@ Matrix<T> read_matrix(std::istream& is = std::cin) {
 
 
 int main(int argc, char** argv) {
-	const std::string input_collection("input\\input_collection.txt");
-	std::ifstream ifs(input_collection);
+	const bool to_gen = argc > 1 && stoi(argv[1]) != 0;
+	const Os op_sys = argc > 2 ? argv[2] == "Win" ? Os::Win : Os::Linux : Os::Linux;
 
-	std::vector<std::string> input_file_names;
+	if (to_gen) {
+		gen(op_sys);
+	}
+
+	const string input_collection(op_sys == Os::Linux? "./input/input_collection.txt": "input\\input_collection.txt");
+	ifstream ifs(input_collection);
+
+	vector<string> input_file_names;
 	do {
-		std::string line;
-		if (!std::getline(ifs, line)) {
+		string line;
+		if (!getline(ifs, line)) {
 			break;
 		}
 		input_file_names.push_back(line);
 	} while (true);
 
 
-	auto now = std::time(0);
-	std::string str_now(std::ctime(&now));
+	auto now = time(0);
+	string str_now(ctime(&now));
 	str_now.pop_back();
 	std::replace(str_now.begin(), str_now.end(), ' ', '_');
 	std::replace(str_now.begin(), str_now.end(), ':', '_');
@@ -60,17 +68,21 @@ int main(int argc, char** argv) {
 	StrassenSerialEager<int, 16> strassen_serial_eager;
 	StrassenSerialLazy<int, 16> strassen_serial_lazy;
 
-	str_now = "";
-	std::ofstream ofs("output\\output_" + str_now + ".txt");
+	// str_now = "";
+	ofstream ofs(op_sys == Os::Linux ? "./output/output_" + str_now + ".txt" : "output\\output_" + str_now + ".txt");
 	Timer<int> timer(&naive_serial, &ofs);
 	Checker<int> checker(&timer, &ofs);
 	Printer<int> printer(&checker, &cout);
 
 	for (const auto& file_name : input_file_names) {
-		cout << file_name;
 		ifstream ifs(file_name);
+
+		ofs << file_name << endl;
+
 		array<Matrix<int>, 2> mats{ read_matrix(ifs), read_matrix(ifs) };
 		auto res = read_matrix(ifs);
+
+		ofs << mats[0].size(0) << " x " << mats[0].size(1) << " x " << mats[1].size(1) << " -> " << res.size(0) << " x " << res.size(1) << "\n" << endl;
 
 		checker.set_answer(&res);
 
@@ -78,86 +90,24 @@ int main(int argc, char** argv) {
 		timer.set_decoratee(&naive_serial);
 		checker(mats);
 
-		ofs << "\n";
+		ofs << endl;
 
 		ofs << "Naive OpenMP: ";
 		timer.set_decoratee(&naive_openmp);
 		checker(mats);
 
-		ofs << "\n";
+		ofs << endl;
 
 		ofs << "Strassen Serial w Eager padding: ";
 		timer.set_decoratee(&strassen_serial_eager);
 		checker(mats);
 
-		ofs << "\n";
+		ofs << endl;
 
 		ofs << "Strassen Serial w Lazy padding: ";
 		timer.set_decoratee(&strassen_serial_lazy);
 		checker(mats);
 
-		ofs << "\n";
+		ofs << "\n" << endl;
 	}
 }
-
-// generation code
-
-/*
-#include "matrix.h"
-#include "naive_openmp.h"
-#include "printer.h"
-
-#include <array>
-#include <fstream>
-#include <random>
-#include <string>
-#include <vector>
-
-using namespace std;
-
-
-int main(int argc, char** argv) {
-	const string dimension_collection("input\\dimension_collection.txt");
-	ifstream ifs(dimension_collection);
-
-	vector<array<const size_t, 3>> dimensions;
-	do {
-		size_t n, m, p;
-		if (!(ifs >> n >> m >> p)) {
-			break;
-		}
-		dimensions.push_back({ n, m, p });
-	} while (true);
-
-	NaiveOpenMp<int> naive_openmp;
-	Printer<int> printer(&naive_openmp);
-
-	random_device rd;
-	mt19937 gen(rd());
-	uniform_int_distribution<int> dist(1, 100);
-	for (size_t i = 0; i < dimensions.size(); ++i) {
-		ofstream ofs("input\\input_" + to_string(i) + ".txt");
-		printer.set_ostream(&ofs);
-
-		array<Matrix<int>, 2> mats;
-		for (size_t j = 0; j < 2; ++j) {
-			mats[j] = Matrix<int>(dimensions[i][j], dimensions[i][j + 1]);
-			for (size_t k = 0; k < mats[j].size(0); ++k) {
-				for (size_t g = 0; g < mats[j].size(1); ++g) {
-					mats[j][k][g] = dist(gen);
-				}
-			}
-		}
-
-		printer(mats);
-	}
-
-
-	const string input_collection("input\\input_collection.txt");
-	ofstream ofs(input_collection);
-
-	for (size_t i = 0; i < dimensions.size(); ++i) {
-		ofs << "input\\input_" << std::to_string(i) << ".txt\n";
-	}
-}
-*/

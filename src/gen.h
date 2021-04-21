@@ -1,4 +1,5 @@
-/*
+#pragma once
+
 #include "matrix.h"
 #include "naive_openmp.h"
 #include "printer.h"
@@ -11,9 +12,14 @@
 
 using namespace std;
 
+enum class Os {
+	Win,
+	Linux
+};
 
-int main(int argc, char** argv) {
-	const string dimension_collection("input\\dimension_collection.txt");
+
+void gen(Os op_sys = Os::Linux) {
+	const string dimension_collection(op_sys == Os::Linux ? "./input/dimension_collection.txt" : "input\\dimension_collection.txt");
 	ifstream ifs(dimension_collection);
 
 	vector<array<const size_t, 3>> dimensions;
@@ -31,8 +37,11 @@ int main(int argc, char** argv) {
 	random_device rd;
 	mt19937 gen(rd());
 	uniform_int_distribution<int> dist(1, 100);
+	vector<string> file_names(dimensions.size());
 	for (size_t i = 0; i < dimensions.size(); ++i) {
-		ofstream ofs("input\\input_" + to_string(i) + ".txt");
+		file_names[i] = (op_sys == Os::Linux ? "./input/input_" + to_string(i) + ".txt" : "input\\input_" + to_string(i) + ".txt");
+		ofstream ofs(file_names[i]);
+
 		printer.set_ostream(&ofs);
 
 		array<Matrix<int>, 2> mats;
@@ -49,11 +58,10 @@ int main(int argc, char** argv) {
 	}
 
 
-	const string input_collection("input\\input_collection.txt");
-	ofstream ofs(dimension_collection);
+	const string input_collection(op_sys == Os::Linux ? "./input/input_collection.txt" : "input\\input_collection.txt");
+	ofstream ofs(input_collection);
 
 	for (size_t i = 0; i < dimensions.size(); ++i) {
-		ofs << "input\\input_" << std::to_string(i) << ".txt\n";
+		ofs << file_names[i] << "\n";
 	}
 }
-*/
