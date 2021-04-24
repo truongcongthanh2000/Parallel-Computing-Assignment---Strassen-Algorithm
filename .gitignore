@@ -1,3 +1,13 @@
 # vs
 .vs
 .vscode
+Debug
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+
+# personal i/o files
+output/
+input/
+!input/dimension_collection.txt
