@@ -1,0 +1,180 @@
+input\input_0.txt
+1 x 2 x 3 -> 1 x 3
+
+Run 0:
+Naive Serial: 0.000 OK 
+Naive OpenMP: 0.000 OK 
+Strassen Serial w Eager padding: 0.000 OK 
+Strassen Serial w Lazy padding: 0.000 OK 
+Strassen OpenMP w Eager padding: 0.028 OK 
+Strassen OpenMP w Lazy padding: 0.000 OK 
+
+input\input_1.txt
+5 x 3 x 7 -> 5 x 7
+
+Run 0:
+Naive Serial: 0.000 OK 
+Naive OpenMP: 0.000 OK 
+Strassen Serial w Eager padding: 0.000 OK 
+Strassen Serial w Lazy padding: 0.000 OK 
+Strassen OpenMP w Eager padding: 0.000 OK 
+Strassen OpenMP w Lazy padding: 0.000 OK 
+
+input\input_2.txt
+9 x 5 x 17 -> 9 x 17
+
+Run 0:
+Naive Serial: 0.000 OK 
+Naive OpenMP: 0.000 OK 
+Strassen Serial w Eager padding: 0.001 OK 
+Strassen Serial w Lazy padding: 0.001 OK 
+Strassen OpenMP w Eager padding: 0.001 OK 
+Strassen OpenMP w Lazy padding: 0.001 OK 
+
+input\input_3.txt
+32 x 32 x 32 -> 32 x 32
+
+Run 0:
+Naive Serial: 0.005 OK 
+Naive OpenMP: 0.004 OK 
+Strassen Serial w Eager padding: 0.006 OK 
+Strassen Serial w Lazy padding: 0.004 OK 
+Strassen OpenMP w Eager padding: 0.004 OK 
+Strassen OpenMP w Lazy padding: 0.005 OK 
+
+input\input_4.txt
+64 x 64 x 64 -> 64 x 64
+
+Run 0:
+Naive Serial: 0.029 OK 
+Naive OpenMP: 0.027 OK 
+Strassen Serial w Eager padding: 0.035 OK 
+Strassen Serial w Lazy padding: 0.036 OK 
+Strassen OpenMP w Eager padding: 0.035 OK 
+Strassen OpenMP w Lazy padding: 0.039 OK 
+
+input\input_5.txt
+127 x 17 x 63 -> 127 x 63
+
+Run 0:
+Naive Serial: 0.016 OK 
+Naive OpenMP: 0.019 OK 
+Strassen Serial w Eager padding: 0.070 OK 
+Strassen Serial w Lazy padding: 0.096 OK 
+Strassen OpenMP w Eager padding: 0.080 OK 
+Strassen OpenMP w Lazy padding: 0.071 OK 
+
+input\input_6.txt
+129 x 15 x 65 -> 129 x 65
+
+Run 0:
+Naive Serial: 0.015 OK 
+Naive OpenMP: 0.016 OK 
+Strassen Serial w Eager padding: 0.237 OK 
+Strassen Serial w Lazy padding: 0.237 OK 
+Strassen OpenMP w Eager padding: 0.240 OK 
+Strassen OpenMP w Lazy padding: 0.262 OK 
+
+input\input_7.txt
+511 x 511 x 511 -> 511 x 511
+
+Run 0:
+Naive Serial: 13.209 OK 
+Naive OpenMP: 13.089 OK 
+Strassen Serial w Eager padding: 12.435 OK 
+Strassen Serial w Lazy padding: 12.597 OK 
+Strassen OpenMP w Eager padding: 12.539 OK 
+Strassen OpenMP w Lazy padding: 12.982 OK 
+
+input\input_8.txt
+512 x 512 x 512 -> 512 x 512
+
+Run 0:
+Naive Serial: 12.904 OK 
+Naive OpenMP: 12.918 OK 
+Strassen Serial w Eager padding: 12.092 OK 
+Strassen Serial w Lazy padding: 12.240 OK 
+Strassen OpenMP w Eager padding: 12.122 OK 
+Strassen OpenMP w Lazy padding: 12.179 OK 
+
+input\input_9.txt
+513 x 513 x 513 -> 513 x 513
+
+Run 0:
+Naive Serial: 12.945 OK 
+Naive OpenMP: 12.953 OK 
+Strassen Serial w Eager padding: 27.361 OK 
+Strassen Serial w Lazy padding: 25.601 OK 
+Strassen OpenMP w Eager padding: 25.276 OK 
+Strassen OpenMP w Lazy padding: 25.929 OK 
+
+input\input_10.txt
+1000 x 1000 x 1000 -> 1000 x 1000
+
+Run 0:
+Naive Serial: 98.356 OK 
+Naive OpenMP: 98.907 OK 
+Strassen Serial w Eager padding: 88.889 OK 
+Strassen Serial w Lazy padding: 87.869 OK 
+Strassen OpenMP w Eager padding: 88.149 OK 
+Strassen OpenMP w Lazy padding: 89.386 OK 
+
+input\input_11.txt
+1024 x 1024 x 1024 -> 1024 x 1024
+
+Run 0:
+Naive Serial: 106.477 OK 
+Naive OpenMP: 107.695 OK 
+Strassen Serial w Eager padding: 87.886 OK 
+Strassen Serial w Lazy padding: 86.921 OK 
+Strassen OpenMP w Eager padding: 85.911 OK 
+Strassen OpenMP w Lazy padding: 86.035 OK 
+
+input\input_12.txt
+1025 x 1025 x 1025 -> 1025 x 1025
+
+Run 0:
+Naive Serial: 104.232 OK 
+Naive OpenMP: 104.486 OK 
+Strassen Serial w Eager padding: 178.348 OK 
+Strassen Serial w Lazy padding: 183.239 OK 
+Strassen OpenMP w Eager padding: 181.902 OK 
+Strassen OpenMP w Lazy padding: 180.996 OK 
+
+input\input_13.txt
+1000 x 512 x 12 -> 1000 x 12
+
+Run 0:
+Naive Serial: 0.590 OK 
+Naive OpenMP: 0.595 OK 
+Strassen Serial w Eager padding: 16.936 OK 
+Strassen Serial w Lazy padding: 16.993 OK 
+Strassen OpenMP w Eager padding: 16.912 OK 
+Strassen OpenMP w Lazy padding: 17.027 OK 
+
+input\input_14.txt
+1021 x 45 x 129 -> 1021 x 129
+
+Run 0:
+Naive Serial: 0.580 OK 
+Naive OpenMP: 0.593 OK 
+Strassen Serial w Eager padding: 13.231 OK 
+Strassen Serial w Lazy padding: 13.374 OK 
+Strassen OpenMP w Eager padding: 14.047 OK 
+Strassen OpenMP w Lazy padding: 13.422 OK 
+
+input\input_15.txt
+2047 x 2048 x 2049 -> 2047 x 2049
+
+Run 0:
+Naive Serial: 833.832 OK 
+Naive OpenMP: 831.821 OK 
+Strassen Serial w Eager padding: 1090.335 OK 
+Strassen Serial w Lazy padding: 1097.356 OK 
+Strassen OpenMP w Eager padding: 1081.018 OK 
+Strassen OpenMP w Lazy padding: 1094.224 OK 
+
+input\input_16.txt
+5000 x 5000 x 5000 -> 5000 x 5000
+
+Run 0:

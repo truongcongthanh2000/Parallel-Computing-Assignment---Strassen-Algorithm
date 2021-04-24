@@ -8,6 +8,7 @@ Debug
 *.vcxproj.user
 
 # personal i/o files
-output/
-input/
+output/*
+!output/output.txt
+input
 !input/dimension_collection.txt
