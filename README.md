@@ -21,6 +21,7 @@
     open teminal and type
     $ ./run_dac.sh
     $ ./run_dac_OpenMP.sh 
-    # Attention: file run_dac_OpenMP.sh is takes very long time to run, please remove the case dimension = 10000 if neccessary.
+    # Attention: file run_dac_OpenMP.sh is takes very long time to run
+    please remove the case dimension = 10000 if neccessary.
 
     # Result is recorded in result_dac.txt and result_dac_OpenMP.txt
