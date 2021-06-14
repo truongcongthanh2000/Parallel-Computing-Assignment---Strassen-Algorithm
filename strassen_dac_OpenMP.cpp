@@ -331,12 +331,20 @@ int main(int argc, char* argv[]) {
 
     double elapsed_secsclock = end - begin;
 
-    std::cout << "OpenMP: matrix size = " << m << " x " << n << ", " << "Threshold = " << THRESHOLD << " num of Process = " << omp_get_max_threads() << std::endl; 
-    std::cout << "Execute time = " << std::fixed << std::setprecision(10) << elapsed_secsclock << std::endl;
+    std::ofstream myfile;
+    myfile.open ("results_dac_OpenMP.txt", std::ofstream::app);
+
+    myfile << "Strassen O(N^log2(7)) With Parallel: matrix size = " << m << " x " << n << ", " << "Threshold = " << THRESHOLD << " num of Process = " << omp_get_max_threads() << '\n';
+    myfile << "Execute time = " << std::fixed << std::setprecision(10) << elapsed_secsclock << '\n';
+    myfile << "-------------------------------------------------------------------------------------------------" << '\n';
+
+    // std::cout << "OpenMP: matrix size = " << m << " x " << n << ", " << "Threshold = " << THRESHOLD << " num of Process = " << omp_get_max_threads() << std::endl; 
+    // std::cout << "Execute time = " << std::fixed << std::setprecision(10) << elapsed_secsclock << std::endl;
 
     std::cerr << "OpenMP: matrix size = " << m << " x " << n << ", " << "Threshold = " << THRESHOLD << " num of Process = " << omp_get_max_threads() << std::endl; 
     std::cerr << "Execute time = " << std::fixed << std::setprecision(10) << elapsed_secsclock << std::endl;
-
+    
+    myfile.close();
     Free2DArray<type> (A);
     Free2DArray<type> (B);
     Free2DArray<type> (C);

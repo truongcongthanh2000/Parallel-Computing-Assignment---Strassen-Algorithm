@@ -320,10 +320,17 @@ int main(int argc, char* argv[]) {
     multiply_leaf(0, m, 0, n, 0, p, A, B, C_ans);
 
     end = clock();
+    std::ofstream myfile;
+    myfile.open ("results_dac.txt",std::ofstream::app);
 
-    std::cout << "Time naive algorithm O(N^3) = " << std::fixed << std::setprecision(10) << (double)(end - begin) / (double)CLOCKS_PER_SEC << std::endl;
+    double elapsed_secsclock = (double)(end - begin) / (double)CLOCKS_PER_SEC;
+    myfile << "Naive O(N^3): matrix size = " << m << " x " << n << ", " << "Threshold = " << THRESHOLD << '\n';
+    myfile << "Execute time = " << std::fixed << std::setprecision(10) << elapsed_secsclock << '\n';
+    myfile << "-------------------------------------------------------------------------------------------------" << '\n';
 
-    std::cerr << "Time naive algorithm O(N^3) = " << std::fixed << std::setprecision(10) << (double)(end - begin) / (double)CLOCKS_PER_SEC << std::endl;
+    // std::cout << "Time naive algorithm O(N^3) = " << std::fixed << std::setprecision(10) << (double)(end - begin) / (double)CLOCKS_PER_SEC << std::endl;
+
+    std::cerr << "Time naive algorithm O(N^3) = " << std::fixed << std::setprecision(10) << (double)(end - begin) / (double)CLOCKS_PER_SEC << '\n';
 
     begin = clock();
 
@@ -331,7 +338,12 @@ int main(int argc, char* argv[]) {
 
     end = clock();
 
-    std::cout << "Time divide and conquer algorithm O(N^log2(7)) = " << std::fixed << std::setprecision(10) << (double)(end - begin) / (double)CLOCKS_PER_SEC << std::endl;
+    elapsed_secsclock = (double)(end - begin) / (double)CLOCKS_PER_SEC;
+    myfile << "Strassen O(N^log2(7)) No Parallel: matrix size = " << m << " x " << n << ", " << "Threshold = " << THRESHOLD << '\n';
+    myfile << "Execute time = " << std::fixed << std::setprecision(10) << elapsed_secsclock << '\n';
+    myfile << "-------------------------------------------------------------------------------------------------" << '\n';
+
+    // std::cout << "Time divide and conquer algorithm O(N^log2(7)) = " << std::fixed << std::setprecision(10) << (double)(end - begin) / (double)CLOCKS_PER_SEC << std::endl;
 
     std::cerr << "Time divide and conquer algorithm O(N^log2(7)) = " << std::fixed << std::setprecision(10) << (double)(end - begin) / (double)CLOCKS_PER_SEC << std::endl;
 
@@ -362,10 +374,14 @@ int main(int argc, char* argv[]) {
     // }
     if (!ok) {
         std::cout << "Wrong Answer!" << std::endl;
+        myfile << "Wrong Answer!" << '\n';
     }
     else {
         std::cout << "Correct Answer!" << std::endl;
+        myfile << "Correct Answer!" << '\n';
     }
+    myfile << '\n';
+    myfile.close();
 
     Free2DArray<type> (A);
     Free2DArray<type> (B);
