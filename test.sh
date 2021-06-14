@@ -1,18 +1,16 @@
 #!/bin/bash
-
 echo "Gen matrix"
-g++ -std=c++11 gen.cpp -o gen
+g++ -std=c++11 gen.cpp -o gen.exe
+./gen.exe 1000 1000 1000 10
 
-./gen 1000 1000 1000 10
+echo "Run strassen algorithm by divide-and-conquer with padding"
+g++ -std=c++11 strassen_dac.cpp -o strassen_dac.exe
+./strassen_dac.exe 64 > output_dac.txt
 
-# echo "Run strassen algorithm by divide-and-conquer"
+echo ""
 
-# g++ -std=c++11 strassen_dac.cpp -o strassen_dac
-# ./strassen_dac
+echo "Run strassen algorithm by divide-and-conquer with padding and parrallel with OpenMP"
+g++ -std=c++11 strassen_dac_OpenMP.cpp -o strassen_dac_OpenMP.exe -fopenmp
+./strassen_dac_OpenMP.exe 64 4 > output_dac_OpenMP.txt
 
-echo "Run strassen algorithm by divide-and-conquer with lazy padding"
-
-g++ -std=c++11 strassen_dac_lazy-padding.cpp -o strassen_dac_lazy-padding
-./strassen_dac_lazy-padding
-
-rm *.exe
+rm -f *.exe*

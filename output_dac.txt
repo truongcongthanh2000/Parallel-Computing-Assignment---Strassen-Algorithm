@@ -1,0 +1,3 @@
+Time naive algorithm O(N^3) = 9.3750000000
+Time divide and conquer algorithm O(N^log2(7)) = 3.6406250000
+Correct Answer!

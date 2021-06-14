@@ -1,212 +1,378 @@
-#include <bits/stdc++.h>
+#include <stdio.h>
+#include <time.h>
+#include <fstream>
+#include <iostream>
+#include <algorithm>
+#include <iomanip>
+#include <assert.h>
 
-using namespace std;
+using type = int; //if value >= 2^31, change type = long long;
 
-typedef vector<int> vi;
-typedef vector<vi> vvi;
+// Run code: g++ -std=c++11 strassen_dac.cpp -o strassen_dac
+//           ./strassen_dac THRESHOLD
+template <typename T>
+T **Allocate2DArray(int nRows, int nCols) {
+    //(step 1) allocate memory for array of elements of column
+    T **ppi = new T*[nRows];
 
-void load(vvi &a, vvi &b) {
-    fstream finp;
-    finp.open("input.txt", ios::in);
-    int n, m, p;
-    finp >> n >> m;
+    //(step 2) allocate memory for array of elements of each row and initial all value is 0
+    T *curPtr = new T [nRows * nCols];
 
-    a.resize(n);
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < m; j++) {
-            int x;
-            finp >> x;
-            a[i].emplace_back(x);
-            assert(x >= 1);
-        }
+    std::fill(curPtr, curPtr + (nRows * nCols), 0);
+
+    // Now point the pointers in the right place
+    for (int i = 0; i < nRows; i++) {
+        *(ppi + i) = curPtr;
+        curPtr += nCols;
     }
+    return ppi;
+}
 
-    finp >> n >> p;
-    b.resize(m);
+template <typename T>
+void Free2DArray(T** Array)
+{
+    delete [] *Array;
+    delete [] Array;
+}
+
+void multiply_leaf(int mfirst, int mlast, int nfirst, int nlast, int pfirst, int plast, type **A, type **B, type **C)
+/*
+  subroutine that uses the simple triple loop to multiply
+  a submatrix from A with a submatrix from B and store the
+  result in a submatrix of C.
+*/
+// mfirst, mlast; /* first and last+1 i index */
+// nfirst, nlast; /* first and last+1 j index */
+// pfirst, plast; /* first and last+1 k index */
+{
+	for (int i = mfirst; i < mlast; i++) {
+		for (int j = nfirst; j < nlast; j++) {
+			C[i][j] = 0;
+			for (int k = pfirst; k < plast; k++){
+				C[i][j] += A[i][k] * B[k][j];
+			}
+		}
+    }
+}
+
+void convertSubMatrix(type **sub_matrix, int nRows, type **matrix, int mfirst, int nfirst) {
+    for (int i = 0; i < nRows; i++) {
+        sub_matrix[i] = &matrix[mfirst + i][nfirst];
+    }
+}
+
+void addMatrix(type **target, int m, int n, type **a, type **b) {
     for (int i = 0; i < m; i++) {
-        for (int j = 0; j < p; j++) {
-            int x;
-            finp >> x;
-            b[i].emplace_back(x);
-            assert(x >= 1);
+        for (int j = 0; j < n; j++) target[i][j] = a[i][j] + b[i][j];
+    }
+}
+
+void subMatrix(type **target, int m, int n, type **a, type **b) {
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) target[i][j] = a[i][j] - b[i][j];
+    }
+}
+
+int THRESHOLD;
+
+// size matrix: A = m x p, B = p x n, C = m x n
+void strassen(int m, int n, int p, type **A, type **B, type **C) {
+    if (m == 1 || n == 1 || p == 1 || std::max(n, std::max(n, p)) <= THRESHOLD) {
+        multiply_leaf(0, m, 0, n, 0, p, A, B, C);
+        return;
+    }
+    assert(m % 2 == 0);
+    assert(n % 2 == 0);
+    assert(p % 2 == 0);
+
+    int m2 = (m / 2) + (m % 2);
+    int n2 = (n / 2) + (n % 2);
+    int p2 = (p / 2) + (p % 2);
+
+    type **M1 = Allocate2DArray< type >(m2, n2);
+    type **M2 = Allocate2DArray< type >(m2, n2);
+    type **M3 = Allocate2DArray< type >(m2, n2);
+    type **M4 = Allocate2DArray< type >(m2, n2);
+    type **M5 = Allocate2DArray< type >(m2, n2);
+    type **M6 = Allocate2DArray< type >(m2, n2);
+    type **M7 = Allocate2DArray< type >(m2, n2);
+
+    type **wAM1 = Allocate2DArray< type >(m2, p2);
+    type **wBM1 = Allocate2DArray< type >(p2, n2);
+    type **wAM2 = Allocate2DArray< type >(m2, p2);
+    type **wBM3 = Allocate2DArray< type >(p2, n2);
+    type **wBM4 = Allocate2DArray< type >(p2, n2);
+    type **wAM5 = Allocate2DArray< type >(m2, p2);
+    type **wAM6 = Allocate2DArray< type >(m2, p2);
+    type **wBM6 = Allocate2DArray< type >(p2, n2);
+    type **wAM7 = Allocate2DArray< type >(m2, p2);
+    type **wBM7 = Allocate2DArray< type >(p2, n2);
+
+    type **A11 = new type*[m2];
+    type **A12 = new type*[m2];
+    type **A21 = new type*[m2];
+    type **A22 = new type*[m2];
+
+    type **B11 = new type*[p2];
+    type **B12 = new type*[p2];
+    type **B21 = new type*[p2];
+    type **B22 = new type*[p2];
+
+    type **C11 = new type*[m2];
+    type **C12 = new type*[m2];
+    type **C21 = new type*[m2];
+    type **C22 = new type*[m2];
+
+    convertSubMatrix(A11, m2, A,  0,  0);
+    convertSubMatrix(A12, m2, A,  0, p2);
+    convertSubMatrix(A21, m2, A, m2,  0);
+    convertSubMatrix(A22, m2, A, m2, p2);
+
+    convertSubMatrix(B11, p2, B,  0,  0);
+    convertSubMatrix(B12, p2, B,  0, n2);
+    convertSubMatrix(B21, p2, B, p2,  0);
+    convertSubMatrix(B22, p2, B, p2, n2);
+
+    convertSubMatrix(C11, m2, C,  0,  0);
+    convertSubMatrix(C12, m2, C,  0, n2);
+    convertSubMatrix(C21, m2, C, m2,  0);
+    convertSubMatrix(C22, m2, C, m2, n2);
+
+
+    {
+	    // M1 = (A11 + A22)*(B11 + B22)
+		addMatrix(wAM1, m2, p2, A11, A22);
+		addMatrix(wBM1, p2, n2, B11, B22);
+		strassen(m2, n2, p2, wAM1, wBM1, M1);
+	}
+    {
+        //M2 = (A21 + A22)*B11
+		addMatrix(wAM2, m2, p2, A21, A22);
+		strassen(m2, n2, p2, wAM2, B11, M2);
+    }
+    {
+        //M3 = A11*(B12 - B22)
+		subMatrix(wBM3, p2, n2, B12, B22);
+		strassen(m2, n2, p2, A11, wBM3, M3);
+    }
+    {
+        //M4 = A22*(B21 - B11)
+		subMatrix(wBM4, p2, n2, B21, B11);
+		strassen(m2, n2, p2, A22, wBM4, M4);
+    }
+    {
+        //M5 = (A11 + A12)*B22
+		addMatrix(wAM5, m2, p2, A11, A12);
+		strassen(m2, n2, p2, wAM5, B22, M5);
+    }
+    {
+        //M6 = (A21 - A11)*(B11 + B12)
+		subMatrix(wAM6, m2, p2, A21, A11);
+		addMatrix(wBM6, p2, n2, B11, B12);
+		strassen(m2, n2, p2, wAM6, wBM6, M6);
+    }
+    {
+        //M7 = (A12 - A22)*(B21 + B22)
+		subMatrix(wAM7, m2, p2, A12, A22);
+		addMatrix(wBM7, p2, n2, B21, B22);
+		strassen(m2, n2, p2, wAM7, wBM7, M7);
+    }
+
+    for (int i = 0; i < m2; i++) {
+        for (int j = 0; j < n2; j++) {
+            C11[i][j] = M1[i][j] + M4[i][j] - M5[i][j] + M7[i][j];
+            C12[i][j] = M3[i][j] + M5[i][j];
+            C21[i][j] = M2[i][j] + M4[i][j];
+            C22[i][j] = M1[i][j] - M2[i][j] + M3[i][j] + M6[i][j];
+        }
+    }
+    Free2DArray< type >(M1);
+    Free2DArray< type >(M2);
+    Free2DArray< type >(M3);
+    Free2DArray< type >(M4);
+    Free2DArray< type >(M5);
+    Free2DArray< type >(M6);
+    Free2DArray< type >(M7);
+
+    Free2DArray< type >(wAM1);
+    Free2DArray< type >(wBM1);
+    Free2DArray< type >(wAM2);
+    Free2DArray< type >(wBM3);
+    Free2DArray< type >(wBM4);
+    Free2DArray< type >(wAM5);
+    Free2DArray< type >(wAM6);
+    Free2DArray< type >(wBM6);
+    Free2DArray< type >(wAM7);
+    Free2DArray< type >(wBM7);
+
+    delete[] A11; delete[] A12; delete[] A21; delete[] A22;
+    delete[] B11; delete[] B12; delete[] B21; delete[] B22;
+    delete[] C11; delete[] C12; delete[] C21; delete[] C22;
+}
+
+// find the optimal number of zero rows to pad given the number of rows in the matrix.
+// Instad of padding to the next power of 2, pad to the least z = m * 2^k
+// such that m < threshold; k is an integer
+int findOptDim(int n, int convThreshold){
+    int counter = 0;
+    while (n > convThreshold){
+        if (n%2 == 0)
+            n /= 2;
+        else
+            n = (n+1)/2;
+        counter ++;
+    }
+    int ans = n;
+    while (counter--) ans *= 2;
+    return ans;
+}
+
+void initPadding(type** &M, int old_m, int old_n, int new_m, int new_n){
+    type **M_copy;
+    M_copy = Allocate2DArray<type>(new_m, new_n);
+    for (int i = 0; i < old_m; i++) {
+        for (int j = 0; j < old_n; j++) {
+            M_copy[i][j] = M[i][j];
         }
     }
 
+    Free2DArray<type>(M);
+    assert(M != nullptr);
+    M = Allocate2DArray<type>(new_m, new_n);
+    for (int i = 0; i < new_m; i++) {
+        for (int j = 0; j < new_n; j++) {
+            M[i][j] = M_copy[i][j];
+        }
+    }
+    Free2DArray<type>(M_copy);
+}
+
+void removePadding(type** &M, int new_m, int new_n){
+    type **M_copy;
+    M_copy = Allocate2DArray<type>(new_m, new_n);
+    for (int i = 0; i < new_m; i++) {
+        for (int j = 0; j < new_n; j++) {
+            M_copy[i][j] = M[i][j];
+        }
+    }
+
+    Free2DArray<type>(M);
+    M = Allocate2DArray<type>(new_m, new_n);
+    for (int i = 0; i < new_m; i++) {
+        for (int j = 0; j < new_n; j++) {
+            M[i][j] = M_copy[i][j];
+        }
+    }
+    Free2DArray<type>(M_copy);
+
+}
+
+// size matrix: A = m x p, B = p x n, C = m x n
+void multiply(int m, int n, int p, type** &A, type** &B, type** &C) {
+    int padding_m = findOptDim(m, THRESHOLD);
+    int padding_n = findOptDim(n, THRESHOLD);
+    int padding_p = findOptDim(p, THRESHOLD);
+    
+    int size = std::max(padding_m, std::max(padding_n, padding_m));
+
+    initPadding(A, m, p, size, size);
+
+    initPadding(B, p, n, size, size);
+
+    initPadding(C, m, n, size, size);
+    {
+        strassen(size, size, size, A, B, C);
+    }
+
+    removePadding(A, m, p);
+    removePadding(B, p, n);
+    removePadding(C, m, n);
+}
+
+void load(type** &A, type** &B, int &m, int &n, int &p) {
+    std::fstream finp;
+    finp.open("input.txt", std::ios::in);
+    finp >> m >> p;
+    A = Allocate2DArray<type>(m, p);
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < p; j++) finp >> A[i][j];
+    }
+    finp >> p >> n;
+    B = Allocate2DArray<type>(p, n);
+    for (int i = 0; i < p; i++) {
+        for (int j = 0; j < n; j++) finp >> B[i][j];
+    }
     finp.close();
 }
 
-void print(vvi &a) {
-    fstream fout;
-    fout.open("output.txt", ios::out);
-    fout << "size matrix " << (int)a.size() << " x " << (int)a[0].size() << '\n';
-    for (vi v : a) {
-        fout << v[0];
-        for (int i = 1; i < (int)v.size(); i++) fout << " " << v[i];
-        fout << '\n';        
-    }
-
-    fout.close();
-}
-
-vvi multiply(vvi &a, vvi &b) {
-    int n = (int)a.size();
-    int m = (int)a[0].size();
-    int p = (int)b[0].size();
-    vvi c(n, vi(p, 0));
-    for (int k = 0; k < m; k++) {
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < p; j++) {
-                c[i][j] += a[i][k] * b[k][j];
-            }
-        }
-    }
-    return c;
-}
-
-vvi matrix_add(vvi &a, vvi &b) {
-    int n = (int)a.size();
-    vvi c(n, vi(n, 0));
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            c[i][j] = a[i][j] + b[i][j];
-        }
-    }
-    return c;
-}   
-vvi matrix_sub(vvi &a, vvi &b) {
-    int n = (int)a.size();
-    vvi c(n, vi(n, 0));
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            c[i][j] = a[i][j] - b[i][j];
-        }
-    }
-    return c;   
-}   
-
-//If the dimension matrix is ​​not in the standard 2^k form, re-normalize
-void norm(int normSize, vvi &a) {
-    int n = (int)a.size();
-    int m = (int)a[0].size();
-
-    for (int i = 0; i < n; i++) {
-        for (int j = m; j < normSize; j++) a[i].emplace_back(0);
-    }
-    for (int i = n; i < normSize; i++) a.emplace_back(vi(normSize, 0));
-
-    assert((int)a.size() == (int)a[0].size());
-    int sz = (int)a.size();
-    assert((sz & (sz - 1)) == 0);
-    
-}
-
-vvi Strassen(vvi &a, vvi &b) {
-    int n = (int)a.size();
-    if (n <= 2) return multiply(a, b);
-
-    int newSize = n / 2;
-    vvi a11, a12, a21, a22, b11, b12, b21, b22;
-    a11 = a12 = a21 = a22 = b11 = b12 = b21 = b22 = vvi(newSize, vi(newSize, 0));
-
-    for (int i = 0; i < newSize; i++) {
-        for (int j = 0; j < newSize; j++) {
-            a11[i][j] = a[i][j];  // top left
-            a12[i][j] = a[i][j + newSize];  // top right
-            a21[i][j] = a[i + newSize][j];  // bottom left
-            a22[i][j] = a[i + newSize][j + newSize];  // bottom right
-
-            b11[i][j] = b[i][j];  // top left
-            b12[i][j] = b[i][j + newSize];  // top right
-            b21[i][j] = b[i + newSize][j];  // bottom left
-            b22[i][j] = b[i + newSize][j + newSize];  // bottom right
-        }
-    }
-
-    vvi aResult = matrix_add(a11, a22); // a11 + a22
-    vvi bResult = matrix_add(b11, b22); // b11 + b22
-
-    // Calculating p1 to p7:
-    vvi p1 = Strassen(aResult, bResult); // p1 = (a11 + a22) * (b11 + b22)
-
-    aResult = matrix_add(a21, a22); // a21 + a22
-    vvi p2 = Strassen(aResult, b11); // p2 = (a21 + a22) * b11
-
-    bResult = matrix_sub(b12, b22); // b12 - b22
-    vvi p3 = Strassen(a11, bResult); //p3 = a11 * (b12 - b22)
-
-    bResult = matrix_sub(b21, b11); // b21 - b11
-    vvi p4 = Strassen(a22, bResult); // p4 = a22 * (b21 - b11)
-
-    aResult = matrix_add(a11, a12); // a11 + a12
-    vvi p5 = Strassen(aResult, b22); // p5 = (a11 + a12) * b22
-
-    aResult = matrix_sub(a21, a11); // a21 - a11
-    bResult = matrix_add(b11, b12); // b11 + b12
-    vvi p6 = Strassen(aResult, bResult); // p6 = (a22 - a11) * (b11 + b12)
-
-    aResult = matrix_sub(a12, a22); // a12 - a22
-    bResult = matrix_add(b21, b22); // b21 + b22
-    vvi p7 = Strassen(aResult, bResult); //p7 = (a12 - a22) * (b21 + b22)
-
-    // calculating c21, c21, c11 and c22:
-    vvi c12 = matrix_add(p3, p5); // c12 = p3 + p5
-    vvi c21 = matrix_add(p2, p4); // c21 = p2 + p4
-
-    aResult = matrix_add(p1, p4); // p1 + p4
-    bResult = matrix_add(aResult, p7); // p1 + p4 + p7
-    vvi c11 = matrix_sub(bResult, p5); // c11 = p1 + p4 - p5 + p7
-
-    aResult = matrix_add(p1, p3); // p1 + p3
-    bResult = matrix_add(aResult, p6); // p1 + p3 + p6
-    vvi c22 = matrix_sub(bResult, p2); // c22 = p1 - p2 + p3 + p6
-
-    // Grouping the results obtained in a single matrix
-    vvi c(n, vi(n, 0));
-    for (int i = 0; i < newSize; i++) {
-        for (int j = 0; j < newSize; j++) {
-            c[i][j] = c11[i][j];
-            c[i][j + newSize] = c12[i][j];
-            c[i + newSize][j] = c21[i][j];
-            c[i + newSize][j + newSize] = c22[i][j];
-        }
-    }
-
-    return c;
-}
-
 int main(int argc, char* argv[]) {
-    vvi a, b;
-    load(a, b); //load matrix a and b
+    THRESHOLD = std::atoi(argv[1]);
 
-    //If the dimension matrix is ​​not in the standard 2^k form, re-normalize
-    int n = (int)a.size();
-    int m = (int)a[0].size();
-    int p = (int)b[0].size();
-    cout << "n, m, p = " << n << " " << m << " " << p << endl;
-
-    int mx = max(max(n, m), p);
-    int pw2 = 1;
-    while (pw2 < mx) pw2 *= 2;
+    type **A;
+    type **B;
+    type **C;
+    type **C_ans;
+    int m, n, p;
+    load(A, B, m, n, p);
     
-    cout << "size 2^k = " << pw2 << endl;
-    norm(pw2, a);
-    norm(pw2, b);
+    C = Allocate2DArray<type>(m, n);
+    C_ans = Allocate2DArray<type>(m, n);
 
     clock_t begin, end;
     begin = clock();
-    vvi c1 = multiply(a, b); ///O(N^3)
+
+    multiply_leaf(0, m, 0, n, 0, p, A, B, C_ans);
+
     end = clock();
-    cout << "Time naive algorithm O(N^3) = " << fixed << setprecision(10) << (double)(end - begin) / (double)CLOCKS_PER_SEC << endl;
+
+    std::cout << "Time naive algorithm O(N^3) = " << std::fixed << std::setprecision(10) << (double)(end - begin) / (double)CLOCKS_PER_SEC << std::endl;
+
+    std::cerr << "Time naive algorithm O(N^3) = " << std::fixed << std::setprecision(10) << (double)(end - begin) / (double)CLOCKS_PER_SEC << std::endl;
 
     begin = clock();
-    vvi c2 = Strassen(a, b); ///O(N^log2(7))
+
+    multiply(m, n, p, A, B, C);
+
     end = clock();
-    cout << "Time strassen algorithm O(N^log2(7)) = " << fixed << setprecision(10) << (double)(end - begin) / (double)CLOCKS_PER_SEC << endl;
 
-    assert(c1 == c2);
+    std::cout << "Time divide and conquer algorithm O(N^log2(7)) = " << std::fixed << std::setprecision(10) << (double)(end - begin) / (double)CLOCKS_PER_SEC << std::endl;
 
-    //print result matrix a x b
-    print(c2);
+    std::cerr << "Time divide and conquer algorithm O(N^log2(7)) = " << std::fixed << std::setprecision(10) << (double)(end - begin) / (double)CLOCKS_PER_SEC << std::endl;
 
-    return 0;
+    bool ok = true;
+    for (int i = 0; i < m && ok; i++) {
+        for (int j = 0; j < n; j++) {
+            if (C[i][j] != C_ans[i][j]) {
+                ok = false;
+                break;
+            }
+        }
+    }
+
+    // std::cout << "Answer = " << std::endl;
+    // for (int i = 0; i < m; i++) {
+    //     for (int j = 0; j < n; j++) {
+    //         std::cout << C_ans[i][j] << ' ';
+    //     }
+    //     std::cout << std::endl;
+    // }
+
+    // std::cout << "My answer = " << std::endl;
+    // for (int i = 0; i < m; i++) {
+    //     for (int j = 0; j < n; j++) {
+    //         std::cout << C[i][j] << ' ';
+    //     }
+    //     std::cout << std::endl;
+    // }
+    if (!ok) {
+        std::cout << "Wrong Answer!" << std::endl;
+    }
+    else {
+        std::cout << "Correct Answer!" << std::endl;
+    }
+
+    Free2DArray<type> (A);
+    Free2DArray<type> (B);
+    Free2DArray<type> (C);
+    Free2DArray<type> (C_ans);
 }
