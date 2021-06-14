@@ -1,0 +1,477 @@
+Strassen O(N^log2(7)) With Parallel: matrix size = 64 x 64, Threshold = 32 num of Process = 1
+Execute time = 0.0037063490
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 64 x 64, Threshold = 32 num of Process = 2
+Execute time = 0.0025229970
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 64 x 64, Threshold = 32 num of Process = 4
+Execute time = 0.0017814480
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 64 x 64, Threshold = 32 num of Process = 8
+Execute time = 0.0028621970
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 64 x 64, Threshold = 32 num of Process = 16
+Execute time = 0.0072387880
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 64 x 64, Threshold = 32 num of Process = 32
+Execute time = 0.0034296890
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 64 x 64, Threshold = 64 num of Process = 1
+Execute time = 0.0035225800
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 64 x 64, Threshold = 64 num of Process = 2
+Execute time = 0.0036431370
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 64 x 64, Threshold = 64 num of Process = 4
+Execute time = 0.0044345860
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 64 x 64, Threshold = 64 num of Process = 8
+Execute time = 0.0040808220
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 64 x 64, Threshold = 64 num of Process = 16
+Execute time = 0.0136883010
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 64 x 64, Threshold = 64 num of Process = 32
+Execute time = 0.0057158010
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 64 x 64, Threshold = 128 num of Process = 1
+Execute time = 0.0034307760
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 64 x 64, Threshold = 128 num of Process = 2
+Execute time = 0.0035803270
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 64 x 64, Threshold = 128 num of Process = 4
+Execute time = 0.0038415300
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 64 x 64, Threshold = 128 num of Process = 8
+Execute time = 0.0077438040
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 64 x 64, Threshold = 128 num of Process = 16
+Execute time = 0.0077872170
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 64 x 64, Threshold = 128 num of Process = 32
+Execute time = 0.0054601740
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 128 x 128, Threshold = 32 num of Process = 1
+Execute time = 0.0232157870
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 128 x 128, Threshold = 32 num of Process = 2
+Execute time = 0.0152371400
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 128 x 128, Threshold = 32 num of Process = 4
+Execute time = 0.0181722920
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 128 x 128, Threshold = 32 num of Process = 8
+Execute time = 0.0268949920
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 128 x 128, Threshold = 32 num of Process = 16
+Execute time = 0.0230889690
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 128 x 128, Threshold = 32 num of Process = 32
+Execute time = 0.0115170040
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 128 x 128, Threshold = 64 num of Process = 1
+Execute time = 0.0258384020
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 128 x 128, Threshold = 64 num of Process = 2
+Execute time = 0.0151674900
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 128 x 128, Threshold = 64 num of Process = 4
+Execute time = 0.0143833050
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 128 x 128, Threshold = 64 num of Process = 8
+Execute time = 0.0231338710
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 128 x 128, Threshold = 64 num of Process = 16
+Execute time = 0.0297115160
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 128 x 128, Threshold = 64 num of Process = 32
+Execute time = 0.0109447850
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 128 x 128, Threshold = 128 num of Process = 1
+Execute time = 0.0263053770
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 128 x 128, Threshold = 128 num of Process = 2
+Execute time = 0.0273069550
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 128 x 128, Threshold = 128 num of Process = 4
+Execute time = 0.0273629660
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 128 x 128, Threshold = 128 num of Process = 8
+Execute time = 0.0285884960
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 128 x 128, Threshold = 128 num of Process = 16
+Execute time = 0.0322131500
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 128 x 128, Threshold = 128 num of Process = 32
+Execute time = 0.0263634760
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 256 x 256, Threshold = 32 num of Process = 1
+Execute time = 0.1547370410
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 256 x 256, Threshold = 32 num of Process = 2
+Execute time = 0.0874082780
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 256 x 256, Threshold = 32 num of Process = 4
+Execute time = 0.0547371270
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 256 x 256, Threshold = 32 num of Process = 8
+Execute time = 0.0511323870
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 256 x 256, Threshold = 32 num of Process = 16
+Execute time = 0.0577004580
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 256 x 256, Threshold = 32 num of Process = 32
+Execute time = 0.0994357860
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 256 x 256, Threshold = 64 num of Process = 1
+Execute time = 0.1662833570
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 256 x 256, Threshold = 64 num of Process = 2
+Execute time = 0.1019829700
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 256 x 256, Threshold = 64 num of Process = 4
+Execute time = 0.0610327880
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 256 x 256, Threshold = 64 num of Process = 8
+Execute time = 0.0445182130
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 256 x 256, Threshold = 64 num of Process = 16
+Execute time = 0.0450463840
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 256 x 256, Threshold = 64 num of Process = 32
+Execute time = 0.0594842000
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 256 x 256, Threshold = 128 num of Process = 1
+Execute time = 0.1906663750
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 256 x 256, Threshold = 128 num of Process = 2
+Execute time = 0.1124330390
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 256 x 256, Threshold = 128 num of Process = 4
+Execute time = 0.0689633080
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 256 x 256, Threshold = 128 num of Process = 8
+Execute time = 0.0447916700
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 256 x 256, Threshold = 128 num of Process = 16
+Execute time = 0.0528437370
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 256 x 256, Threshold = 128 num of Process = 32
+Execute time = 0.0558343870
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 512 x 512, Threshold = 32 num of Process = 1
+Execute time = 1.1096984550
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 512 x 512, Threshold = 32 num of Process = 2
+Execute time = 0.6181641800
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 512 x 512, Threshold = 32 num of Process = 4
+Execute time = 0.3679492950
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 512 x 512, Threshold = 32 num of Process = 8
+Execute time = 0.2371578380
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 512 x 512, Threshold = 32 num of Process = 16
+Execute time = 0.2542192840
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 512 x 512, Threshold = 32 num of Process = 32
+Execute time = 0.3626180300
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 512 x 512, Threshold = 64 num of Process = 1
+Execute time = 1.1732635310
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 512 x 512, Threshold = 64 num of Process = 2
+Execute time = 0.6938559140
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 512 x 512, Threshold = 64 num of Process = 4
+Execute time = 0.3662000340
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 512 x 512, Threshold = 64 num of Process = 8
+Execute time = 0.2495920700
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 512 x 512, Threshold = 64 num of Process = 16
+Execute time = 0.2019514110
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 512 x 512, Threshold = 64 num of Process = 32
+Execute time = 0.2652159050
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 512 x 512, Threshold = 128 num of Process = 1
+Execute time = 1.3671590330
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 512 x 512, Threshold = 128 num of Process = 2
+Execute time = 0.8143865070
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 512 x 512, Threshold = 128 num of Process = 4
+Execute time = 0.4271309670
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 512 x 512, Threshold = 128 num of Process = 8
+Execute time = 0.2909355860
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 512 x 512, Threshold = 128 num of Process = 16
+Execute time = 0.3055972210
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 512 x 512, Threshold = 128 num of Process = 32
+Execute time = 0.2582831310
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 1024 x 1024, Threshold = 32 num of Process = 1
+Execute time = 7.7542687680
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 1024 x 1024, Threshold = 32 num of Process = 2
+Execute time = 4.0295095620
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 1024 x 1024, Threshold = 32 num of Process = 4
+Execute time = 2.2760024690
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 1024 x 1024, Threshold = 32 num of Process = 8
+Execute time = 1.3723501020
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 1024 x 1024, Threshold = 32 num of Process = 16
+Execute time = 1.1194767160
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 1024 x 1024, Threshold = 32 num of Process = 32
+Execute time = 1.1761407800
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 1024 x 1024, Threshold = 64 num of Process = 1
+Execute time = 8.0666562560
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 1024 x 1024, Threshold = 64 num of Process = 2
+Execute time = 4.1704769890
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 1024 x 1024, Threshold = 64 num of Process = 4
+Execute time = 2.3417400470
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 1024 x 1024, Threshold = 64 num of Process = 8
+Execute time = 1.4764262420
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 1024 x 1024, Threshold = 64 num of Process = 16
+Execute time = 1.1876615950
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 1024 x 1024, Threshold = 64 num of Process = 32
+Execute time = 1.3633841830
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 1024 x 1024, Threshold = 128 num of Process = 1
+Execute time = 9.5009374720
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 1024 x 1024, Threshold = 128 num of Process = 2
+Execute time = 5.5896997380
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 1024 x 1024, Threshold = 128 num of Process = 4
+Execute time = 2.7268299780
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 1024 x 1024, Threshold = 128 num of Process = 8
+Execute time = 1.6109792750
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 1024 x 1024, Threshold = 128 num of Process = 16
+Execute time = 1.1532595020
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 1024 x 1024, Threshold = 128 num of Process = 32
+Execute time = 1.4300381610
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 2048 x 2048, Threshold = 32 num of Process = 1
+Execute time = 54.2552961990
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 2048 x 2048, Threshold = 32 num of Process = 2
+Execute time = 31.6583574040
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 2048 x 2048, Threshold = 32 num of Process = 4
+Execute time = 15.3579841030
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 2048 x 2048, Threshold = 32 num of Process = 8
+Execute time = 8.9391288360
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 2048 x 2048, Threshold = 32 num of Process = 16
+Execute time = 5.9648281520
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 2048 x 2048, Threshold = 32 num of Process = 32
+Execute time = 6.0191744610
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 2048 x 2048, Threshold = 64 num of Process = 1
+Execute time = 56.8632344950
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 2048 x 2048, Threshold = 64 num of Process = 2
+Execute time = 32.7946412440
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 2048 x 2048, Threshold = 64 num of Process = 4
+Execute time = 15.4281507450
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 2048 x 2048, Threshold = 64 num of Process = 8
+Execute time = 9.1934865360
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 2048 x 2048, Threshold = 64 num of Process = 16
+Execute time = 5.2886360390
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 2048 x 2048, Threshold = 64 num of Process = 32
+Execute time = 5.1398180420
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 2048 x 2048, Threshold = 128 num of Process = 1
+Execute time = 66.2401993210
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 2048 x 2048, Threshold = 128 num of Process = 2
+Execute time = 34.2370806540
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 2048 x 2048, Threshold = 128 num of Process = 4
+Execute time = 18.3854471570
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 2048 x 2048, Threshold = 128 num of Process = 8
+Execute time = 9.7878128270
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 2048 x 2048, Threshold = 128 num of Process = 16
+Execute time = 5.8994796640
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 2048 x 2048, Threshold = 128 num of Process = 32
+Execute time = 5.7544690630
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 100 x 100, Threshold = 32 num of Process = 1
+Execute time = 0.0115535260
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 100 x 100, Threshold = 32 num of Process = 2
+Execute time = 0.0077577850
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 100 x 100, Threshold = 32 num of Process = 4
+Execute time = 0.0059586080
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 100 x 100, Threshold = 32 num of Process = 8
+Execute time = 0.0046943410
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 100 x 100, Threshold = 32 num of Process = 16
+Execute time = 0.0142787680
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 100 x 100, Threshold = 32 num of Process = 32
+Execute time = 0.0074010430
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 100 x 100, Threshold = 64 num of Process = 1
+Execute time = 0.0115068330
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 100 x 100, Threshold = 64 num of Process = 2
+Execute time = 0.0078948760
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 100 x 100, Threshold = 64 num of Process = 4
+Execute time = 0.0051818500
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 100 x 100, Threshold = 64 num of Process = 8
+Execute time = 0.0042258140
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 100 x 100, Threshold = 64 num of Process = 16
+Execute time = 0.0087596930
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 100 x 100, Threshold = 64 num of Process = 32
+Execute time = 0.0077109320
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 100 x 100, Threshold = 128 num of Process = 1
+Execute time = 0.0131335340
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 100 x 100, Threshold = 128 num of Process = 2
+Execute time = 0.0136228040
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 100 x 100, Threshold = 128 num of Process = 4
+Execute time = 0.0127938510
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 100 x 100, Threshold = 128 num of Process = 8
+Execute time = 0.0132109720
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 100 x 100, Threshold = 128 num of Process = 16
+Execute time = 0.0160691540
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 100 x 100, Threshold = 128 num of Process = 32
+Execute time = 0.0141503720
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 1000 x 1000, Threshold = 32 num of Process = 1
+Execute time = 7.7879004350
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 1000 x 1000, Threshold = 32 num of Process = 2
+Execute time = 4.1180098510
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 1000 x 1000, Threshold = 32 num of Process = 4
+Execute time = 2.1906175590
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 1000 x 1000, Threshold = 32 num of Process = 8
+Execute time = 1.3182637220
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 1000 x 1000, Threshold = 32 num of Process = 16
+Execute time = 0.9427960570
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 1000 x 1000, Threshold = 32 num of Process = 32
+Execute time = 1.0953995960
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 1000 x 1000, Threshold = 64 num of Process = 1
+Execute time = 7.6700336900
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 1000 x 1000, Threshold = 64 num of Process = 2
+Execute time = 4.5187938780
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 1000 x 1000, Threshold = 64 num of Process = 4
+Execute time = 2.2253857240
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 1000 x 1000, Threshold = 64 num of Process = 8
+Execute time = 1.3418675240
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 1000 x 1000, Threshold = 64 num of Process = 16
+Execute time = 0.9826012270
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 1000 x 1000, Threshold = 64 num of Process = 32
+Execute time = 0.9757416180
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 1000 x 1000, Threshold = 128 num of Process = 1
+Execute time = 8.5261914370
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 1000 x 1000, Threshold = 128 num of Process = 2
+Execute time = 5.0077131130
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 1000 x 1000, Threshold = 128 num of Process = 4
+Execute time = 2.4557247570
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 1000 x 1000, Threshold = 128 num of Process = 8
+Execute time = 1.4596283300
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 1000 x 1000, Threshold = 128 num of Process = 16
+Execute time = 1.0290288970
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 1000 x 1000, Threshold = 128 num of Process = 32
+Execute time = 1.1004315190
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 10000 x 10000, Threshold = 32 num of Process = 1
+Execute time = 5061.8122561580
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 10000 x 10000, Threshold = 32 num of Process = 2
+Execute time = 2519.8398632260
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 10000 x 10000, Threshold = 32 num of Process = 4
+Execute time = 1352.7577299450
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 10000 x 10000, Threshold = 32 num of Process = 8
+Execute time = 674.1620179140
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 10000 x 10000, Threshold = 32 num of Process = 16
+Execute time = 361.9808696360
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 10000 x 10000, Threshold = 64 num of Process = 1
+Execute time = 5187.37241494
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 10000 x 10000, Threshold = 64 num of Process = 2
+Execute time = 2589.1862074680
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 10000 x 10000, Threshold = 64 num of Process = 4
+Execute time = 1294.59310373
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 10000 x 10000, Threshold = 64 num of Process = 8
+Execute time = 643.7965518670
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 10000 x 10000, Threshold = 64 num of Process = 16
+Execute time = 360.3311200360
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 10000 x 10000, Threshold = 128 num of Process = 1
+Execute time = 5089.73118734
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 10000 x 10000, Threshold = 128 num of Process = 2
+Execute time = 2589.36559367
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 10000 x 10000, Threshold = 128 num of Process = 4
+Execute time = 1312.6827968345
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 10000 x 10000, Threshold = 128 num of Process = 8
+Execute time = 680.3413984170
+-------------------------------------------------------------------------------------------------
+Strassen O(N^log2(7)) With Parallel: matrix size = 10000 x 10000, Threshold = 128 num of Process = 16
+Execute time = 366.3508157390
+-------------------------------------------------------------------------------------------------
