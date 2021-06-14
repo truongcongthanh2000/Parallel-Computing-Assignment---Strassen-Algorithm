@@ -81,9 +81,6 @@ void strassen(int m, int n, int p, type **A, type **B, type **C) {
         multiply_leaf(0, m, 0, n, 0, p, A, B, C);
         return;
     }
-    assert(m % 2 == 0);
-    assert(n % 2 == 0);
-    assert(p % 2 == 0);
 
     int m2 = (m / 2) + (m % 2);
     int n2 = (n / 2) + (n % 2);
@@ -237,7 +234,6 @@ void initPadding(type** &M, int old_m, int old_n, int new_m, int new_n){
     }
 
     Free2DArray<type>(M);
-    assert(M != nullptr);
     M = Allocate2DArray<type>(new_m, new_n);
     for (int i = 0; i < new_m; i++) {
         for (int j = 0; j < new_n; j++) {

@@ -1,2 +1,2 @@
 OpenMP: matrix size = 1000 x 1000, Threshold = 64 num of Process = 4
-Execute time = 2.1004325000
+Execute time = 3.0988541000
