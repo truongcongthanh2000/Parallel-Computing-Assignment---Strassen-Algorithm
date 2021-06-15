@@ -4,6 +4,8 @@
 
 Multiply 2 Matrix using [Strassen algorithm](https://en.wikipedia.org/wiki/Strassen_algorithm) with [OpenMP](https://en.wikipedia.org/wiki/OpenMP) in parallelization
 
+Special: dimension of matrix is not necessarily form of power 2
+
 ## Member in Team
 |NAME|ID Student|
 |---|---|
@@ -29,3 +31,8 @@ Multiply 2 Matrix using [Strassen algorithm](https://en.wikipedia.org/wiki/Stras
     please remove the case dimension = 10000 if neccessary.
 
     # Result is recorded in result_dac.txt and result_dac_OpenMP.txt
+
+## Measurement results chart
+
+[Result](https://github.com/truongcongthanh2000/Parallel-Computing-Assignment---Strassen-Algorithm/blob/main/PC_Strassen_Chart.xlsx)
+    
