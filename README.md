@@ -1,5 +1,9 @@
 # Parallel-Computing-Assignment---Strassen-Algorithm
 
+## Problem Statement
+
+Multiply 2 Matrix using [Strassen algorithm](https://en.wikipedia.org/wiki/Strassen_algorithm) with [OpenMP](https://en.wikipedia.org/wiki/OpenMP) in parallelization
+
 ## Member in Team
 |NAME|ID Student|
 |---|---|
