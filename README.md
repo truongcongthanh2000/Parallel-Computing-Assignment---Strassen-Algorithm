@@ -11,7 +11,7 @@ Special: dimension of matrix is not necessarily form of power 2
 |---|---|
 |[Nguyen Huu Thien Phu](https://github.com/phupfoem)|1810433|
 |[Nguyen Minh Anh](https://github.com/zoldabest-72)|1811431|
-|[Doan Ngoc Thinh]()|1810542|
+|[Doan Ngoc Thinh](https://github.com/nngthinh)|1810542|
 |[Truong Cong Thanh](https://github.com/truongcongthanh2000)|1810766|
 
 ## Usage
